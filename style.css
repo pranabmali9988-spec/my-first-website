@@ -241,3 +241,192 @@ h2 { font-size: clamp(42px, 5vw, 62px); }
     transition: none;
   }
 }
+
+
+/* Category photos are reused as temporary cover images for the sliding produce cards. */
+.details-cover {
+  height: 160px;
+  margin: 0 0 22px;
+  border-radius: 4px;
+  background-color: var(--sage);
+  background-image: linear-gradient(90deg, rgba(28, 57, 40, .58), rgba(28, 57, 40, .05)), url("https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center 48%;
+}
+.details-cover.crop-cover {
+  background-image: linear-gradient(90deg, rgba(28, 57, 40, .58), rgba(28, 57, 40, .05)), url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80");
+}
+.details-cover.more-cover {
+  background-position: center;
+}
+.slider-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 12px;
+}
+.slider-toolbar > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.slider-buttons { display: flex; gap: 8px; }
+.slider-arrow {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #c8cdbf;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--forest);
+  font-size: 19px;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, opacity .2s ease;
+}
+.slider-arrow:hover:not(:disabled) { background: var(--forest); color: white; }
+.slider-arrow:disabled { opacity: .35; cursor: default; }
+.vegetable-grid {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 3px 2px 14px;
+  scrollbar-color: #aab69e #ecece2;
+  scrollbar-width: thin;
+}
+.vegetable-item {
+  flex: 0 0 clamp(185px, 25%, 225px);
+  min-height: 160px;
+  scroll-snap-align: start;
+  border: 1px solid #e2e2d7;
+  box-shadow: 0 8px 18px #263d2b0a;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.vegetable-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 22px #263d2b16;
+}
+
+/* Interactive seed-to-tomato plant illustration in the hero banner. */
+.hero { flex-direction: row; align-items: center; gap: 24px; }
+.hero-content { position: relative; z-index: 2; width: min(58%, 650px); }
+.growth-plant {
+  position: absolute;
+  z-index: 2;
+  right: 9%;
+  top: 50%;
+  width: min(29vw, 310px);
+  min-width: 210px;
+  padding: 10px 12px 0;
+  border: 1px solid rgba(237, 240, 232, .25);
+  border-radius: 160px 160px 12px 12px;
+  background: rgba(22, 52, 36, .24);
+  color: #f2f1e5;
+  cursor: pointer;
+  transform: translateY(-47%);
+  transition: background .35s ease, border-color .35s ease, box-shadow .35s ease;
+  backdrop-filter: blur(2px);
+}
+.growth-plant:hover, .growth-plant:focus-visible, .growth-plant.is-grown {
+  background: rgba(22, 52, 36, .45);
+  border-color: rgba(237, 240, 232, .52);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .16);
+}
+.growth-plant svg { display: block; width: 100%; height: auto; overflow: visible; }
+.growth-hint {
+  display: block;
+  padding: 7px 0 0;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  text-align: center;
+}
+.soil-shadow { fill: rgba(10, 28, 18, .25); }
+.soil-line { stroke: #b6c58c; stroke-width: 3; stroke-linecap: round; }
+.plant-stem {
+  stroke-dasharray: 230;
+  stroke-dashoffset: 230;
+  transition: stroke-dashoffset 1.05s cubic-bezier(.2,.7,.2,1);
+}
+.plant-branch {
+  stroke-dasharray: 190;
+  stroke-dashoffset: 190;
+  transition: stroke-dashoffset .9s ease .3s;
+}
+.plant-leaf {
+  opacity: 0;
+  transform: scale(.12);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity .35s ease, transform .65s cubic-bezier(.2,.8,.2,1);
+}
+.leaf-one { transition-delay: .25s; }
+.leaf-two { transition-delay: .4s; }
+.leaf-three { transition-delay: .55s; }
+.leaf-four { transition-delay: .7s; }
+.tomato-fruit {
+  opacity: 0;
+  transform: scale(.2);
+  transform-origin: center;
+  transform-box: fill-box;
+  transition: opacity .35s ease .8s, transform .65s ease .8s;
+}
+.seed-part { opacity: 1; transition: opacity .25s ease .15s; }
+.plant-sprout { opacity: 0; transition: opacity .25s ease; }
+.growth-plant:hover .plant-stem,
+.growth-plant:focus-visible .plant-stem,
+.growth-plant.is-grown .plant-stem { stroke-dashoffset: 0; }
+.growth-plant:hover .plant-branch,
+.growth-plant:focus-visible .plant-branch,
+.growth-plant.is-grown .plant-branch { stroke-dashoffset: 0; }
+.growth-plant:hover .plant-leaf,
+.growth-plant:focus-visible .plant-leaf,
+.growth-plant.is-grown .plant-leaf { opacity: 1; transform: scale(1); }
+.growth-plant:hover .tomato-fruit,
+.growth-plant:focus-visible .tomato-fruit,
+.growth-plant.is-grown .tomato-fruit { opacity: 1; transform: scale(1); }
+.growth-plant:hover .seed-part,
+.growth-plant:focus-visible .seed-part,
+.growth-plant.is-grown .seed-part { opacity: 0; }
+.growth-plant:hover .plant-sprout,
+.growth-plant:focus-visible .plant-sprout,
+.growth-plant.is-grown .plant-sprout { opacity: 1; }
+
+@media (max-width: 760px) {
+  .hero { display: block; padding-top: 70px; padding-bottom: 65px; }
+  .hero-content { width: 100%; max-width: 100%; }
+  .growth-plant {
+    position: relative;
+    display: block;
+    top: auto;
+    right: auto;
+    width: min(62vw, 230px);
+    min-width: 0;
+    margin: 28px auto 0;
+    transform: none;
+  }
+  .hero-note { bottom: 18px; }
+  .details-cover { height: 125px; }
+  .vegetable-item { flex-basis: 190px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vegetable-grid { scroll-behavior: auto; }
+  .plant-stem, .plant-branch, .plant-leaf, .tomato-fruit, .seed-part, .plant-sprout,
+  .growth-plant, .vegetable-item {
+    transition: none !important;
+  }
+  .growth-plant:hover .plant-stem,
+  .growth-plant:focus-visible .plant-stem,
+  .growth-plant.is-grown .plant-stem,
+  .growth-plant:hover .plant-branch,
+  .growth-plant:focus-visible .plant-branch,
+  .growth-plant.is-grown .plant-branch { stroke-dashoffset: 0; }
+  .growth-plant:hover .plant-leaf,
+  .growth-plant:focus-visible .plant-leaf,
+  .growth-plant.is-grown .plant-leaf,
+  .growth-plant:hover .tomato-fruit,
+  .growth-plant:focus-visible .tomato-fruit,
+  .growth-plant.is-grown .tomato-fruit { opacity: 1; transform: none; }
+}
