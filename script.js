@@ -115,12 +115,6 @@ function populateCategoryPreviews() {
 }
 
 populateCategoryPreviews();
-categoryButtons.forEach((button) => {
-  button.addEventListener("pointerenter", () => button.classList.add("is-previewing"));
-  button.addEventListener("pointerleave", () => button.classList.remove("is-previewing"));
-  button.addEventListener("focus", () => button.classList.add("is-previewing"));
-  button.addEventListener("blur", () => button.classList.remove("is-previewing"));
-});
 
 function closeProduceDetails() {
   if (!detailsPanel) return;
@@ -170,12 +164,11 @@ categoryButtons.forEach((button) => {
     });
 
     detailsItems.scrollLeft = 0;
-    updateSliderButtons();
     detailsPanel.hidden = false;
     updateSliderButtons();
     button.setAttribute("aria-expanded", "true");
     detailsPanel.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      behavior: "auto",
       block: "nearest"
     });
   });
@@ -194,7 +187,7 @@ if (backToTopButton) {
   backToTopButton.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      behavior: "auto"
     });
   });
 }
