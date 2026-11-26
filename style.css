@@ -543,3 +543,63 @@ h2 { font-size: clamp(42px, 5vw, 62px); }
 .vegetable-photo.image-unavailable {
   visibility: hidden;
 }
+
+
+/* Static presentation mode: normal full-colour pictures, no animations. */
+*, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+.vegetable-photo,
+.vegetable-item:hover .vegetable-photo,
+.vegetable-item:focus-within .vegetable-photo,
+.vegetable-item.is-colour .vegetable-photo {
+  filter: none !important;
+  transform: none !important;
+}
+.category-preview {
+  transition: none !important;
+  transform: none !important;
+}
+.category-card:hover .category-preview,
+.category-card:focus-visible .category-preview,
+.category-card.is-previewing .category-preview {
+  opacity: 1;
+  transform: none;
+}
+/* The tomato plant stays as a still decorative illustration. */
+.growth-plant-static {
+  position: absolute;
+  z-index: 2;
+  right: 9%;
+  top: 50%;
+  width: min(29vw, 310px);
+  min-width: 210px;
+  padding: 10px 12px 0;
+  border: 1px solid rgba(237, 240, 232, .25);
+  border-radius: 160px 160px 12px 12px;
+  background: rgba(22, 52, 36, .24);
+  pointer-events: none;
+  transform: translateY(-47%);
+  backdrop-filter: blur(2px);
+}
+.growth-plant-static svg { display: block; width: 100%; height: auto; overflow: visible; }
+.growth-plant-static .plant-stem,
+.growth-plant-static .plant-branch { stroke-dashoffset: 0; }
+.growth-plant-static .plant-leaf,
+.growth-plant-static .tomato-fruit,
+.growth-plant-static .plant-sprout { opacity: 1; transform: none; }
+.growth-plant-static .seed-part { opacity: 0; }
+@media (max-width: 760px) {
+  .growth-plant-static {
+    position: relative;
+    display: block;
+    top: auto;
+    right: auto;
+    width: min(62vw, 230px);
+    min-width: 0;
+    margin: 28px auto 0;
+    transform: none;
+  }
+}
