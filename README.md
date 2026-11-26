@@ -20,3 +20,5 @@ The current website uses sample copy and illustrative stock imagery; it does not
 
 ## Daily development log
 - 2026-11-26: Added a keyboard-accessible skip link, visible keyboard focus styles, Escape-to-close support for the mobile menu, and reduced-motion preferences.
+
+- 2026-11-26: Added an accessible floating back-to-top button that appears after scrolling and respects reduced-motion settings.
