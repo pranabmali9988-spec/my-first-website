@@ -149,7 +149,6 @@ categoryButtons.forEach((button) => {
     content.items.forEach(([symbol, name, description, imageUrl]) => {
       const item = document.createElement("article");
       item.className = "vegetable-item";
-      item.addEventListener("click", () => item.classList.toggle("is-colour"));
 
       const image = document.createElement("img");
       image.className = "vegetable-photo";
@@ -201,27 +200,6 @@ if (backToTopButton) {
 }
 
 
-// Reveal page sections and paper-style cards as they enter the viewport.
-// Visitors who prefer reduced motion see the content immediately.
-const revealElements = document.querySelectorAll("[data-reveal]");
-const prefersLessMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-if (!prefersLessMotion && "IntersectionObserver" in window) {
-  revealElements.forEach((element) => element.classList.add("reveal-pending"));
-
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-revealed");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
-
-  revealElements.forEach((element) => revealObserver.observe(element));
-}
-
-
 // Horizontal produce slider controls for mouse, keyboard and touch visitors.
 function updateSliderButtons() {
   if (!detailsItems || !sliderPrev || !sliderNext) return;
@@ -252,11 +230,3 @@ detailsItems?.addEventListener("wheel", (event) => {
 }, { passive: false });
 
 window.addEventListener("resize", updateSliderButtons);
-
-// Let touch users tap the hero illustration to toggle the grown tomato plant.
-const growthPlant = document.querySelector("#growth-plant");
-growthPlant?.addEventListener("click", () => {
-  const isGrown = growthPlant.classList.toggle("is-grown");
-  growthPlant.setAttribute("aria-pressed", String(isGrown));
-  growthPlant.setAttribute("aria-label", isGrown ? "Reset tomato plant to seed" : "Grow a tomato plant");
-});
