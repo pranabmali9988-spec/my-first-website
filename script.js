@@ -149,6 +149,7 @@ categoryButtons.forEach((button) => {
     content.items.forEach(([symbol, name, description, imageUrl]) => {
       const item = document.createElement("article");
       item.className = "vegetable-item";
+      item.addEventListener("click", () => item.classList.toggle("is-colour"));
 
       const image = document.createElement("img");
       image.className = "vegetable-photo";
