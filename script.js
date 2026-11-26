@@ -21,3 +21,14 @@ if (menuButton && navigation) {
 
 const yearElement = document.querySelector("#year");
 if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+// Let keyboard users close the mobile navigation with Escape.
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && navigation?.classList.contains("open")) {
+    navigation.classList.remove("open");
+    menuButton?.setAttribute("aria-expanded", "false");
+    menuButton?.setAttribute("aria-label", "Open navigation");
+    if (menuButton) menuButton.textContent = "☰";
+    menuButton?.focus();
+  }
+});
