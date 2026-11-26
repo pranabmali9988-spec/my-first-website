@@ -206,7 +206,7 @@ function scrollProduceSlider(direction) {
   const distance = firstCard ? firstCard.getBoundingClientRect().width + 14 : 220;
   detailsItems.scrollBy({
     left: direction * distance * 2,
-    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+    behavior: "auto"
   });
 }
 sliderPrev?.addEventListener("click", () => scrollProduceSlider(-1));
