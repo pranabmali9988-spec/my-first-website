@@ -122,6 +122,7 @@ categoryButtons.forEach((button) => {
     detailsItems.scrollLeft = 0;
     updateSliderButtons();
     detailsPanel.hidden = false;
+    updateSliderButtons();
     button.setAttribute("aria-expanded", "true");
     detailsPanel.scrollIntoView({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
