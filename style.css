@@ -533,3 +533,13 @@ h2 { font-size: clamp(42px, 5vw, 62px); }
   .vegetable-item:hover .vegetable-photo,
   .vegetable-item:focus-within .vegetable-photo { transform: none; }
 }
+
+
+/* Tapping a produce card on a touch screen toggles its photo into colour. */
+.vegetable-item.is-colour .vegetable-photo {
+  filter: grayscale(0%);
+  transform: scale(1.035);
+}
+.vegetable-photo.image-unavailable {
+  visibility: hidden;
+}
