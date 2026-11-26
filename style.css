@@ -112,3 +112,38 @@ h2 { font-size: clamp(42px, 5vw, 62px); }
     scroll-behavior: auto !important;
   }
 }
+
+
+/* A small, keyboard-friendly shortcut back to the top of the page. */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--forest);
+  color: white;
+  font: 700 22px var(--sans);
+  cursor: pointer;
+  box-shadow: 0 4px 14px #102b1d30;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover { background: var(--leaf); }
+.back-to-top:focus-visible { outline-color: var(--forest); outline-offset: 4px; }
+@media (max-width: 760px) {
+  .back-to-top { right: 16px; bottom: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top { transition: none; }
+}
