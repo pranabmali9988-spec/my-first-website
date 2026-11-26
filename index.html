@@ -37,6 +37,42 @@
         <p class="hero-copy">Welcome to Mali Krishi Farm. Explore fresh vegetables and farm crops, and follow our journey as we grow.</p>
         <a class="button button-light" href="#products">Explore our produce <span>↘</span></a>
       </div>
+      <button class="growth-plant" id="growth-plant" type="button" aria-label="Grow a tomato plant" aria-pressed="false" title="Hover over or tap to grow a tomato plant">
+        <span class="growth-hint">HOVER OR TAP TO GROW</span>
+        <svg viewBox="0 0 300 360" role="img" aria-label="An illustrated tomato plant growing from a seed">
+          <ellipse class="soil-shadow" cx="150" cy="321" rx="105" ry="17"></ellipse>
+          <path class="soil-line" d="M48 320 Q150 292 252 320" fill="none"></path>
+          <g class="seed-part">
+            <ellipse cx="150" cy="308" rx="12" ry="7" fill="#b9874f"></ellipse>
+            <path d="M144 307 Q150 300 157 307" fill="none" stroke="#e6c28a" stroke-width="2" stroke-linecap="round"></path>
+          </g>
+          <path class="plant-stem" d="M150 307 C145 274 157 252 150 222 C143 193 153 169 150 139 C148 124 151 112 153 101" fill="none" stroke="#a6cb70" stroke-width="8" stroke-linecap="round"></path>
+          <path class="plant-branch" d="M150 231 C125 214 111 200 97 180 M151 191 C177 179 190 164 205 144 M151 151 C128 135 117 120 108 102 M152 119 C173 105 185 91 190 77" fill="none" stroke="#a6cb70" stroke-width="5" stroke-linecap="round"></path>
+          <g class="plant-leaf leaf-one">
+            <path d="M102 183 C65 181 57 148 64 132 C94 133 117 150 102 183Z" fill="#7eae57"></path>
+            <path d="M69 139 Q86 156 102 178" stroke="#d7e7a7" stroke-width="2" fill="none"></path>
+          </g>
+          <g class="plant-leaf leaf-two">
+            <path d="M198 151 C231 151 245 123 238 103 C208 105 187 121 198 151Z" fill="#5d964b"></path>
+            <path d="M234 111 Q216 128 199 146" stroke="#d7e7a7" stroke-width="2" fill="none"></path>
+          </g>
+          <g class="plant-leaf leaf-three">
+            <path d="M111 113 C77 111 66 84 77 66 C106 70 126 89 111 113Z" fill="#8fbd62"></path>
+            <path d="M83 73 Q100 91 111 108" stroke="#d7e7a7" stroke-width="2" fill="none"></path>
+          </g>
+          <g class="plant-leaf leaf-four">
+            <path d="M187 91 C218 88 229 61 217 45 C190 52 173 71 187 91Z" fill="#6da34e"></path>
+            <path d="M212 52 Q197 69 188 86" stroke="#d7e7a7" stroke-width="2" fill="none"></path>
+          </g>
+          <g class="tomato-fruit">
+            <circle cx="125" cy="221" r="15" fill="#c95f42"></circle>
+            <path d="M125 205 l-5 7 5 -2 5 2 -3 -7" fill="#648b45"></path>
+            <circle cx="185" cy="181" r="17" fill="#d66d48"></circle>
+            <path d="M185 164 l-6 8 6 -2 6 2 -3 -8" fill="#648b45"></path>
+          </g>
+          <path class="plant-sprout" d="M150 308 C150 293 143 284 132 281 M150 298 C153 285 161 279 170 276" fill="none" stroke="#a6cb70" stroke-width="4" stroke-linecap="round"></path>
+        </svg>
+      </button>
       <div class="hero-note"><span class="note-dot"></span> A little closer to nature.</div>
     </section>
 
@@ -75,6 +111,14 @@
             <button class="close-details" type="button" aria-label="Close produce details">×</button>
           </div>
           <p class="details-intro" id="details-intro">Explore the vegetables listed below. You can edit these sample items as your farm's produce list grows.</p>
+          <div class="details-cover" id="details-cover" aria-hidden="true"></div>
+          <div class="slider-toolbar">
+            <p id="slider-instructions">Swipe, scroll, or use the arrows to explore.</p>
+            <div class="slider-buttons">
+              <button class="slider-arrow" id="slider-prev" type="button" aria-label="Show previous produce items" aria-controls="details-items">←</button>
+              <button class="slider-arrow" id="slider-next" type="button" aria-label="Show next produce items" aria-controls="details-items">→</button>
+            </div>
+          </div>
           <div class="vegetable-grid" id="details-items">
             <article class="vegetable-item"><span aria-hidden="true">🍅</span><h4>Tomato</h4><p>Fresh vegetables</p></article>
             <article class="vegetable-item"><span aria-hidden="true">🥒</span><h4>Cucumber</h4><p>Fresh vegetables</p></article>
