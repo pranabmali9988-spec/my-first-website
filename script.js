@@ -32,3 +32,25 @@ document.addEventListener("keydown", (event) => {
     menuButton?.focus();
   }
 });
+
+
+// Show a back-to-top shortcut after the visitor scrolls down the page.
+const backToTopButton = document.querySelector(".back-to-top");
+
+if (backToTopButton) {
+  const updateBackToTopVisibility = () => {
+    backToTopButton.classList.toggle("is-visible", window.scrollY > 400);
+  };
+
+  window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+  updateBackToTopVisibility();
+
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth"
+    });
+  });
+}
