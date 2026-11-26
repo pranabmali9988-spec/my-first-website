@@ -46,40 +46,81 @@ const closeDetailsButton = document.querySelector(".close-details");
 const produceContent = {
   vegetables: {
     title: "Fresh vegetables",
-    intro: "Swipe, scroll or use the arrows to explore these sample vegetables. Replace or add items as your farm's produce list grows.",
+    intro: "Explore fresh vegetable examples. These are sample listings and can be replaced with the farm's actual produce and photos.",
     coverClass: "vegetable-cover",
     items: [
-      ["🍅", "Tomato", "Fresh vegetables"],
-      ["🥒", "Cucumber", "Fresh vegetables"],
-      ["🥦", "Cauliflower", "Fresh vegetables"],
-      ["🌿", "Coriander", "Fresh herbs"],
-      ["🥬", "Spinach", "Leafy vegetables"],
-      ["🌱", "Radish", "Root vegetables"]
+      ["🍅", "Tomato", "Fresh vegetables", "https://images.unsplash.com/photo-1524593166156-312f362cada0?auto=format&fit=crop&w=720&q=80"],
+      ["🥒", "Cucumber", "Fresh vegetables", "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=720&q=80"],
+      ["🥦", "Cauliflower", "Fresh vegetables", "https://images.unsplash.com/photo-1768860400114-35b07b42ef08?auto=format&fit=crop&w=720&q=80"],
+      ["🌿", "Coriander", "Fresh herbs", "https://www.fruitlinq.com/cdn/shop/files/C1.jpg?v=1769237489"],
+      ["🥬", "Spinach", "Leafy vegetables", "https://cdn.shopify.com/s/files/1/0648/4217/0584/files/richtige-ernaehrung-bei-eisenmangel-frankjuice_1024x1024.jpg?v=1696405149"],
+      ["🌱", "Radish", "Root vegetables", "https://www.gartenbau-winklhofer.at/assets/images/galerie-versprechen-hofladen/radieschen-gross.jpg"],
+      ["🥔", "Potato", "Root vegetables", "https://images.unsplash.com/photo-1566055803687-0665ef48df90?auto=format&fit=crop&w=720&q=80"]
     ]
   },
   crops: {
     title: "Farm crops",
-    intro: "Explore examples of common farm crops. This is a starter list and can be edited to match what Mali Krishi Farm grows.",
+    intro: "Explore examples of common farm crops. This starter list can be edited to match what Mali Krishi Farm grows.",
     coverClass: "crop-cover",
     items: [
-      ["🌾", "Wheat", "Cereal crop"],
-      ["🌾", "Barley", "Cereal crop"],
-      ["🌽", "Maize", "Grain crop"],
-      ["🌾", "Rice", "Grain crop"],
-      ["🫘", "Lentil", "Pulse crop"],
-      ["🌼", "Mustard", "Oilseed crop"]
+      ["🌾", "Wheat", "Cereal crop", "https://images.unsplash.com/photo-1560437164-31316238e463?auto=format&fit=crop&w=720&q=80"],
+      ["🌾", "Barley", "Cereal crop", "https://images.unsplash.com/photo-1694680162578-e347aaf4caf4?auto=format&fit=crop&w=720&q=80"],
+      ["🌽", "Maize", "Grain crop", "https://images.unsplash.com/photo-1649251037566-6881b4956615?auto=format&fit=crop&w=720&q=80"],
+      ["🌾", "Rice", "Grain crop", "https://images.unsplash.com/photo-1760286834274-4f13c9747f7d?auto=format&fit=crop&w=720&q=80"],
+      ["🫘", "Lentil", "Pulse crop", "https://www.world-grain.com/ext/resources/TopicLandingPages/Commodities.webp?t=1533655011"],
+      ["🌼", "Mustard", "Oilseed crop", "https://images.unsplash.com/photo-1560437164-31316238e463?auto=format&fit=crop&w=720&q=80"]
     ]
   },
   more: {
     title: "More to discover",
     intro: "This section is ready for any other farm products you decide to add later.",
+    coverClass: "more-cover",
     items: [
-      ["＋", "Add a product", "Add a short description"],
-      ["＋", "Add a product", "Add a short description"],
-      ["＋", "Add a product", "Add a short description"]
+      ["＋", "Add a product", "Add a short description", "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=720&q=80"],
+      ["＋", "Add a product", "Add a short description", "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=720&q=80"],
+      ["＋", "Add a product", "Add a short description", "https://www.world-grain.com/ext/resources/TopicLandingPages/Commodities.webp?t=1533655011"]
     ]
   }
 };
+
+
+function populateCategoryPreviews() {
+  categoryButtons.forEach((button) => {
+    const preview = button.querySelector(".category-preview");
+    const content = produceContent[button.dataset.category];
+    if (!preview || !content) return;
+
+    preview.replaceChildren();
+    content.items.slice(0, 3).forEach(([symbol, name, description, imageUrl]) => {
+      const chip = document.createElement("span");
+      chip.className = "category-preview-item";
+      const image = document.createElement("img");
+      image.src = imageUrl;
+      image.alt = "";
+      image.loading = "lazy";
+      image.addEventListener("error", () => image.classList.add("preview-image-unavailable"), { once: true });
+      const label = document.createElement("span");
+      label.textContent = name;
+      chip.append(image, label);
+      preview.append(chip);
+    });
+
+    if (content.items.length > 3) {
+      const more = document.createElement("span");
+      more.className = "category-preview-more";
+      more.textContent = "+" + (content.items.length - 3) + " more";
+      preview.append(more);
+    }
+  });
+}
+
+populateCategoryPreviews();
+categoryButtons.forEach((button) => {
+  button.addEventListener("pointerenter", () => button.classList.add("is-previewing"));
+  button.addEventListener("pointerleave", () => button.classList.remove("is-previewing"));
+  button.addEventListener("focus", () => button.classList.add("is-previewing"));
+  button.addEventListener("blur", () => button.classList.remove("is-previewing"));
+});
 
 function closeProduceDetails() {
   if (!detailsPanel) return;
@@ -105,17 +146,26 @@ categoryButtons.forEach((button) => {
     }
     detailsItems.replaceChildren();
 
-    content.items.forEach(([symbol, name, description]) => {
+    content.items.forEach(([symbol, name, description, imageUrl]) => {
       const item = document.createElement("article");
       item.className = "vegetable-item";
-      const icon = document.createElement("span");
-      icon.setAttribute("aria-hidden", "true");
-      icon.textContent = symbol;
+
+      const image = document.createElement("img");
+      image.className = "vegetable-photo";
+      image.src = imageUrl;
+      image.alt = name;
+      image.loading = "lazy";
+      image.addEventListener("error", () => {
+        image.classList.add("image-unavailable");
+        image.removeAttribute("src");
+        image.alt = name + " image unavailable";
+      }, { once: true });
+
       const heading = document.createElement("h4");
       heading.textContent = name;
       const copy = document.createElement("p");
       copy.textContent = description;
-      item.append(icon, heading, copy);
+      item.append(image, heading, copy);
       detailsItems.append(item);
     });
 
@@ -190,6 +240,16 @@ function scrollProduceSlider(direction) {
 sliderPrev?.addEventListener("click", () => scrollProduceSlider(-1));
 sliderNext?.addEventListener("click", () => scrollProduceSlider(1));
 detailsItems?.addEventListener("scroll", updateSliderButtons, { passive: true });
+detailsItems?.addEventListener("wheel", (event) => {
+  const hasHorizontalOverflow = detailsItems.scrollWidth > detailsItems.clientWidth + 2;
+  if (!hasHorizontalOverflow) return;
+  const wheelAmount = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+  if (wheelAmount !== 0) {
+    event.preventDefault();
+    detailsItems.scrollLeft += wheelAmount;
+  }
+}, { passive: false });
+
 window.addEventListener("resize", updateSliderButtons);
 
 // Let touch users tap the hero illustration to toggle the grown tomato plant.
