@@ -17,3 +17,6 @@ Open `index.html` in a browser, or enable GitHub Pages in the repository setting
 4. Replace the sample stock photos with photos you own or have permission to use.
 
 The current website uses sample copy and illustrative stock imagery; it does not claim specific certifications or farming practices.
+
+## Daily development log
+- 2026-11-26: Added a keyboard-accessible skip link, visible keyboard focus styles, Escape-to-close support for the mobile menu, and reduced-motion preferences.
