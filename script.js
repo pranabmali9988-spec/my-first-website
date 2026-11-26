@@ -38,12 +38,16 @@ const detailsPanel = document.querySelector("#category-details");
 const detailsTitle = document.querySelector("#details-title");
 const detailsIntro = document.querySelector("#details-intro");
 const detailsItems = document.querySelector("#details-items");
+const detailsCover = document.querySelector("#details-cover");
+const sliderPrev = document.querySelector("#slider-prev");
+const sliderNext = document.querySelector("#slider-next");
 const closeDetailsButton = document.querySelector(".close-details");
 
 const produceContent = {
   vegetables: {
     title: "Fresh vegetables",
-    intro: "Here are six sample vegetables to get the list started. Replace or add items as your farm's produce changes.",
+    intro: "Swipe, scroll or use the arrows to explore these sample vegetables. Replace or add items as your farm's produce list grows.",
+    coverClass: "vegetable-cover",
     items: [
       ["🍅", "Tomato", "Fresh vegetables"],
       ["🥒", "Cucumber", "Fresh vegetables"],
@@ -55,11 +59,15 @@ const produceContent = {
   },
   crops: {
     title: "Farm crops",
-    intro: "Your crop list can go here. Replace these simple placeholders with the crop names and details you want visitors to see.",
+    intro: "Explore examples of common farm crops. This is a starter list and can be edited to match what Mali Krishi Farm grows.",
+    coverClass: "crop-cover",
     items: [
-      ["🌾", "Add crop name", "Add a short description"],
-      ["🌱", "Add crop name", "Add a short description"],
-      ["🌿", "Add crop name", "Add a short description"]
+      ["🌾", "Wheat", "Cereal crop"],
+      ["🌾", "Barley", "Cereal crop"],
+      ["🌽", "Maize", "Grain crop"],
+      ["🌾", "Rice", "Grain crop"],
+      ["🫘", "Lentil", "Pulse crop"],
+      ["🌼", "Mustard", "Oilseed crop"]
     ]
   },
   more: {
@@ -91,6 +99,10 @@ categoryButtons.forEach((button) => {
 
     detailsTitle.textContent = content.title;
     detailsIntro.textContent = content.intro;
+    if (detailsCover) {
+      detailsCover.className = "details-cover " + (content.coverClass || "more-cover");
+      detailsCover.setAttribute("aria-label", content.title + " category photograph");
+    }
     detailsItems.replaceChildren();
 
     content.items.forEach(([symbol, name, description]) => {
@@ -107,6 +119,8 @@ categoryButtons.forEach((button) => {
       detailsItems.append(item);
     });
 
+    detailsItems.scrollLeft = 0;
+    updateSliderButtons();
     detailsPanel.hidden = false;
     button.setAttribute("aria-expanded", "true");
     detailsPanel.scrollIntoView({
@@ -154,3 +168,33 @@ if (!prefersLessMotion && "IntersectionObserver" in window) {
 
   revealElements.forEach((element) => revealObserver.observe(element));
 }
+
+
+// Horizontal produce slider controls for mouse, keyboard and touch visitors.
+function updateSliderButtons() {
+  if (!detailsItems || !sliderPrev || !sliderNext) return;
+  const maxScroll = detailsItems.scrollWidth - detailsItems.clientWidth;
+  sliderPrev.disabled = detailsItems.scrollLeft <= 4;
+  sliderNext.disabled = detailsItems.scrollLeft >= maxScroll - 4;
+}
+function scrollProduceSlider(direction) {
+  if (!detailsItems) return;
+  const firstCard = detailsItems.querySelector(".vegetable-item");
+  const distance = firstCard ? firstCard.getBoundingClientRect().width + 14 : 220;
+  detailsItems.scrollBy({
+    left: direction * distance * 2,
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+  });
+}
+sliderPrev?.addEventListener("click", () => scrollProduceSlider(-1));
+sliderNext?.addEventListener("click", () => scrollProduceSlider(1));
+detailsItems?.addEventListener("scroll", updateSliderButtons, { passive: true });
+window.addEventListener("resize", updateSliderButtons);
+
+// Let touch users tap the hero illustration to toggle the grown tomato plant.
+const growthPlant = document.querySelector("#growth-plant");
+growthPlant?.addEventListener("click", () => {
+  const isGrown = growthPlant.classList.toggle("is-grown");
+  growthPlant.setAttribute("aria-pressed", String(isGrown));
+  growthPlant.setAttribute("aria-label", isGrown ? "Reset tomato plant to seed" : "Grow a tomato plant");
+});
