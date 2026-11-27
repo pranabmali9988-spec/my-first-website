@@ -704,3 +704,91 @@ h2 { font-size: clamp(38px, 4.8vw, 58px); }
   .slider-toolbar > p { max-width: 170px; }
   .category-preview-item img { height: 55px; }
 }
+
+
+/* Gentle, accessible motion and the farm growth infographic */
+@keyframes farm-rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-content { animation: farm-rise-in 700ms ease-out both; }
+.growth-plant-static { animation: farm-rise-in 900ms 100ms ease-out both; }
+.growth-guide {
+  padding: 88px 0 94px;
+  background: #f7f6ef;
+}
+.growth-guide-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 34px;
+}
+.growth-guide-heading > p {
+  max-width: 390px;
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.growth-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.growth-step {
+  min-height: 230px;
+  padding: 24px;
+  border: 1px solid #e0e3d8;
+  border-radius: 5px;
+  background: var(--paper);
+  animation: farm-rise-in 650ms ease-out both;
+}
+.growth-step:nth-child(2) { animation-delay: 120ms; }
+.growth-step:nth-child(3) { animation-delay: 240ms; }
+.growth-step-art {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 36px;
+}
+.growth-step-number {
+  color: var(--terracotta);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+.growth-step h3 {
+  margin: 9px 0 6px;
+  color: var(--forest);
+  font: 600 22px/1.2 var(--serif);
+}
+.growth-step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.price-placeholder {
+  margin: 8px 4px 0 !important;
+  color: var(--forest) !important;
+  font-size: 11px !important;
+  font-weight: 700;
+}
+@media (max-width: 760px) {
+  .growth-guide { padding: 70px 0; }
+  .growth-guide-heading { display: block; }
+  .growth-guide-heading > p { margin-top: 16px; }
+  .growth-steps { grid-template-columns: 1fr; }
+  .growth-step { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
