@@ -54,8 +54,7 @@ const produceContent = {
       ["🥦", "Cauliflower", "Fresh vegetables", "https://images.unsplash.com/photo-1768860400114-35b07b42ef08?auto=format&fit=crop&w=720&q=80"],
       ["🌿", "Coriander", "Fresh herbs", "https://www.fruitlinq.com/cdn/shop/files/C1.jpg?v=1769237489"],
       ["🥬", "Spinach", "Leafy vegetables", "https://cdn.shopify.com/s/files/1/0648/4217/0584/files/richtige-ernaehrung-bei-eisenmangel-frankjuice_1024x1024.jpg?v=1696405149"],
-      ["🌱", "Radish", "Root vegetables", "https://www.gartenbau-winklhofer.at/assets/images/galerie-versprechen-hofladen/radieschen-gross.jpg"],
-      ["🥔", "Potato", "Root vegetables", "https://images.unsplash.com/photo-1566055803687-0665ef48df90?auto=format&fit=crop&w=720&q=80"]
+      ["🌱", "Radish", "Root vegetables", "https://www.gartenbau-winklhofer.at/assets/images/galerie-versprechen-hofladen/radieschen-gross.jpg"]
     ]
   },
   crops: {
