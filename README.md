@@ -1,34 +1,37 @@
 # Mali Krishi Farm Website
 
-A responsive website for Mali Krishi Farm, built with plain HTML, CSS and JavaScript.
+A responsive farm website for **Mali Krishi Farm**, built with plain HTML, CSS and JavaScript.
 
-## Files
-- `index.html` — page structure and content
-- `style.css` — layout, colors, responsive styling and produce cards
-- `script.js` — mobile navigation, interactive produce categories and footer year
+## Project files
 
-## Preview
-Open `index.html` in a browser, or enable GitHub Pages in the repository settings to publish it. If the repository is connected to Vercel, each push to the production branch can trigger a new deployment.
+- `index.html` — page content and structure
+- `style.css` — visual design, typography and responsive layouts
+- `script.js` — navigation, interactive produce categories, slider controls and footer year
 
-## Updating the produce lists
-Open `script.js` and find the `produceContent` object.
-- Edit the six sample entries under `vegetables` (Tomato, Cucumber, Cauliflower, Coriander, Spinach and Radish) to change vegetable names and descriptions.
-- Replace the placeholder entries under `crops` with your crop names.
-- Add more entries by copying an item row in the relevant list. Each row contains an emoji, a name and a short description.
+These three files are the complete runtime source for this static website. No package manager or build step is required.
+
+## Run locally
+
+Open `index.html` in a modern browser. The website can also be deployed as a static site through Vercel.
+
+## Update the produce
+
+Edit the `produceContent` object in `script.js`.
+
+- The six starter vegetables are Tomato, Cucumber, Cauliflower, Coriander, Spinach and Radish.
+- Replace the example crop entries with crops actually grown by the farm.
+- Replace the sample images with farm-owned images or images you have permission to use.
+- Edit each item's `Price: ///` placeholder when confirmed prices are available.
 
 ## Before publishing
-1. Replace the email and phone placeholders in the Contact section of `index.html` with your real details.
-2. Update the farm introduction and product list with accurate details.
-3. Add the farm's real location and social links if you want to display them.
-4. Replace sample stock photos with photos you own or have permission to use.
-5. Confirm that every crop or vegetable shown is actually grown or offered by the farm.
 
-The current website uses sample copy and illustrative stock imagery; it does not claim specific certifications or farming practices. Contact details are placeholders and are not clickable.
+1. Replace the editable email and phone placeholders in `index.html` with verified contact details.
+2. Confirm that the farm description, produce list and crop list are accurate.
+3. Add the farm's confirmed location and social links if desired.
+4. Check that all images are owned by the farm or properly licensed.
 
-## Recent changes
-- 2026-11-26: Added keyboard-accessible navigation, visible focus styles, Escape-to-close support, reduced-motion preferences and a floating back-to-top button.
-- 2026-11-26: Removed the sample email button and replaced it with editable email and phone placeholders.
-- 2026-11-26: Added clickable produce categories. Fresh vegetables opens a six-item sample list; crop and extra-product sections contain editable placeholders.
-- 2026-11-26: Refreshed the theme with warm cream, sage green and terracotta accents.
+## Update history
 
-- 2026-11-26: Confirmed the original `my-first-website` project contains the requested clickable vegetable category, six starter vegetables, refreshed cream/sage/terracotta theme, removed email button, and editable email/phone placeholders.
+- 2026-11-26: Refreshed the warm cream, sage-green and terracotta theme; added clickable produce categories and six starter vegetables; removed the email button and kept editable contact placeholders.
+- 2026-11-27: Added the farm growth guide, editable produce price placeholders, improved reduced-motion support and updated the starter vegetable list.
+- 2026-11-27: Increased key text sizes for readability and made the full **MALI KRISHI FARM** brand name bold in the header and footer.
