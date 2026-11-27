@@ -159,7 +159,11 @@ categoryButtons.forEach((button) => {
       heading.textContent = name;
       const copy = document.createElement("p");
       copy.textContent = description;
-      item.append(image, heading, copy);
+      const price = document.createElement("p");
+      price.className = "price-placeholder";
+      price.textContent = "Price: ///";
+      price.setAttribute("aria-label", "Editable price placeholder");
+      item.append(image, heading, copy, price);
       detailsItems.append(item);
     });
 
