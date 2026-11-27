@@ -12,7 +12,7 @@ Open `index.html` in a browser, or enable GitHub Pages in the repository setting
 
 ## Updating the produce lists
 Open `script.js` and find the `produceContent` object.
-- Edit the six entries under `vegetables` to change vegetable names and descriptions.
+- Edit the six sample entries under `vegetables` (Tomato, Cucumber, Cauliflower, Coriander, Spinach and Radish) to change vegetable names and descriptions.
 - Replace the placeholder entries under `crops` with your crop names.
 - Add more entries by copying an item row in the relevant list. Each row contains an emoji, a name and a short description.
 
@@ -30,3 +30,5 @@ The current website uses sample copy and illustrative stock imagery; it does not
 - 2026-11-26: Removed the sample email button and replaced it with editable email and phone placeholders.
 - 2026-11-26: Added clickable produce categories. Fresh vegetables opens a six-item sample list; crop and extra-product sections contain editable placeholders.
 - 2026-11-26: Refreshed the theme with warm cream, sage green and terracotta accents.
+
+- 2026-11-26: Confirmed the original `my-first-website` project contains the requested clickable vegetable category, six starter vegetables, refreshed cream/sage/terracotta theme, removed email button, and editable email/phone placeholders.
