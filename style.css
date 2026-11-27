@@ -18,8 +18,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.7;
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
@@ -72,7 +72,7 @@ button { font: inherit; }
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: 12px 24px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 }
 .navigation a { color: var(--forest); }
@@ -132,8 +132,8 @@ h1 em, h2 em { color: #c5d2a8; font-weight: 600; }
   max-width: 465px;
   margin: 22px 0 28px;
   color: #edf0e8;
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.85;
 }
 .button {
   display: inline-flex;
@@ -209,8 +209,8 @@ h2 { font-size: clamp(38px, 4.8vw, 58px); }
 .intro-copy {
   max-width: 480px;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.85;
+  font-size: 15px;
+  line-height: 1.9;
 }
 .small-note { color: #788276 !important; font-size: 11px !important; }
 
@@ -496,8 +496,8 @@ h2 { font-size: clamp(38px, 4.8vw, 58px); }
   max-width: 380px;
   margin: 0 0 5px;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.8;
 }
 .team-grid {
   display: grid;
