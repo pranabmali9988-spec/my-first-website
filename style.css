@@ -792,3 +792,152 @@ h2 { font-size: clamp(38px, 4.8vw, 58px); }
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Modern farm homepage and crop learning cards */
+.hero {
+  min-height: 660px;
+  padding-top: 100px;
+  padding-bottom: 88px;
+  background-position: center 55%;
+}
+.hero-brand-title {
+  max-width: 720px;
+  font-family: var(--sans);
+  font-size: clamp(54px, 8.3vw, 108px);
+  font-weight: 700;
+  letter-spacing: -.075em;
+  line-height: .92;
+  text-transform: uppercase;
+}
+.hero-brand-title span { display: block; }
+.hero-brand-title span:last-child {
+  color: #d5e0bc;
+  letter-spacing: -.055em;
+}
+.hero-subtitle {
+  margin: 22px 0 0;
+  color: #f0d5c3;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .22em;
+}
+.hero-copy { max-width: 500px; font-size: 16px; }
+.button-light { transition: transform 180ms ease, background 180ms ease; }
+.button-light:hover { transform: translateY(-3px); background: #e4eadb; }
+.growth-plant-static { right: 7%; width: min(25vw, 260px); }
+.crop-guides {
+  padding: 96px 0 100px;
+  background: #eef0e7;
+}
+.crop-guides-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 34px;
+  margin-bottom: 38px;
+}
+.crop-guides-heading > p {
+  max-width: 390px;
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.crop-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.crop-guide-card {
+  overflow: hidden;
+  border: 1px solid #dfe4d8;
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 12px 30px rgba(35,58,42,.06);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.crop-guide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 38px rgba(35,58,42,.12);
+}
+.crop-guide-card > img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  background: var(--sage);
+}
+.crop-guide-body { padding: 25px 27px 28px; }
+.crop-tag {
+  color: var(--terracotta);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+.crop-guide-body h3 {
+  margin: 8px 0 15px;
+  color: var(--forest);
+  font: 600 30px/1.15 var(--serif);
+}
+.crop-guide-body p {
+  margin: 11px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+.crop-guide-body p strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--forest);
+  font-size: 11px;
+  letter-spacing: .03em;
+}
+.crop-safety-note {
+  display: flex;
+  gap: 18px;
+  margin-top: 25px;
+  padding: 24px 26px;
+  border: 1px solid #d4ddca;
+  border-radius: 7px;
+  background: #e2e9d9;
+}
+.crop-safety-note > span { color: var(--terracotta); font-size: 27px; }
+.crop-safety-note strong { color: var(--forest); font: 600 19px var(--serif); }
+.crop-safety-note p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.crop-sources {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.crop-sources a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.crop-guide-card:nth-child(2) { transition-delay: 80ms; }
+.crop-guide-card:nth-child(3) { transition-delay: 150ms; }
+.crop-guide-card:nth-child(4) { transition-delay: 220ms; }
+@media (max-width: 760px) {
+  .hero { min-height: 0; padding-top: 70px; }
+  .hero-brand-title { font-size: clamp(48px, 13vw, 78px); }
+  .growth-plant-static { width: min(62vw, 220px); }
+  .crop-guides { padding: 72px 0; }
+  .crop-guides-heading { display: block; }
+  .crop-guides-heading > p { margin-top: 17px; }
+  .crop-guide-grid { grid-template-columns: 1fr; }
+  .crop-guide-card > img { height: 205px; }
+  .crop-guide-body { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .crop-guide-card, .button-light { transition: none; }
+}
