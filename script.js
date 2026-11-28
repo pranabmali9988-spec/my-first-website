@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js-reveal");
+
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".navigation");
 
