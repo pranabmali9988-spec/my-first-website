@@ -35,3 +35,19 @@ Edit the `produceContent` object in `script.js`.
 - 2026-11-26: Refreshed the warm cream, sage-green and terracotta theme; added clickable produce categories and six starter vegetables; removed the email button and kept editable contact placeholders.
 - 2026-11-27: Added the farm growth guide, editable produce price placeholders, improved reduced-motion support and updated the starter vegetable list.
 - 2026-11-27: Increased key text sizes for readability and made the full **MALI KRISHI FARM** brand name bold in the header and footer.
+
+
+## Crop learning section
+
+The homepage now includes starter growing notes for tomato, cucumber, maize and rice. The notes cover general growing environments, basic cultivation practices and soil nutrition. They are introductory only: local altitude, season, variety, field conditions and soil tests should guide farm decisions.
+
+Reference material:
+- NARC Horticulture: https://narchorticulture.org/vegetable-production/
+- National Center for Vegetable Development: https://ncpvs.gov.np/en/
+- Department of Agriculture: https://doanepal.gov.np/home
+
+The website uses remote Unsplash image URLs for illustrative crop photography. Replace these with farm-owned photographs when available.
+
+## Latest update
+
+- 2026-11-28: Made the farm name the main homepage headline, refreshed the hero layout, added responsive crop-learning cards for tomato, cucumber, maize and rice, added gentle scroll-reveal and hover motion with reduced-motion support, and linked Nepal agricultural reference sources.
