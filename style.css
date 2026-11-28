@@ -917,12 +917,13 @@ h2 { font-size: clamp(38px, 4.8vw, 58px); }
   line-height: 1.8;
 }
 .crop-sources a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
-.reveal {
+.reveal { opacity: 1; transform: none; }
+.js-reveal .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 650ms ease, transform 650ms ease;
 }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.js-reveal .reveal.is-visible { opacity: 1; transform: translateY(0); }
 .crop-guide-card:nth-child(2) { transition-delay: 80ms; }
 .crop-guide-card:nth-child(3) { transition-delay: 150ms; }
 .crop-guide-card:nth-child(4) { transition-delay: 220ms; }
